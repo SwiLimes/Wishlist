@@ -1,3 +1,8 @@
 spring:
   application:
     name: Wishlist
+  datasource:
+    url: jdbc:postgresql://localhost:5432/wishlist
+    username: username
+    password: password
+    driver-class-name: org.postgresql.Driver
