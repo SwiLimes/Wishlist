@@ -29,6 +29,7 @@ public class GiftService {
 
     /**
      * Возвращает список всех подарков
+     *
      * @return список подарков
      */
     public List<Gift> getAll() {
@@ -38,6 +39,7 @@ public class GiftService {
 
     /**
      * Возвращает подарок по идентификатору, если существует. Иначе выбрасывает исключение
+     *
      * @param id идентификатор подарка
      * @return подарок, если существует
      * @throws GiftNotFoundException если подарок не найден
@@ -50,6 +52,7 @@ public class GiftService {
 
     /**
      * Возвращает список подарков, отфильтрованных по важности
+     *
      * @param importance важность подарка
      * @return список подарков по важности
      */
@@ -60,6 +63,7 @@ public class GiftService {
 
     /**
      * Сохраняет подарок
+     *
      * @param gift подарок
      * @return сохраненный подарок
      */
@@ -71,6 +75,7 @@ public class GiftService {
 
     /**
      * Обновляет подарок
+     *
      * @param gift подарок
      * @throws GiftNotFoundException если подарок не найден
      */
@@ -92,6 +97,7 @@ public class GiftService {
 
     /**
      * Удаляет подарок
+     *
      * @param id идентификатор подарка
      * @throws GiftNotFoundException если подарок не найден
      */
