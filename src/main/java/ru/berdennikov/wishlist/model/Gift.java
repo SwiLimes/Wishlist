@@ -21,7 +21,7 @@ public class Gift {
     /**
      *  Название
      */
-    @NotBlank(message = "{gift.notEmpty}")
+    @NotBlank(message = "{gift.empty}")
     @Size(min = 5, max = 150, message = "{gift.size}")
     private String title;
 
