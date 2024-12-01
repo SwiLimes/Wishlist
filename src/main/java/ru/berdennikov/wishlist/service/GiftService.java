@@ -1,5 +1,7 @@
 package ru.berdennikov.wishlist.service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
@@ -16,6 +18,8 @@ import java.util.List;
 @Service
 public class GiftService {
 
+    private static final Logger log = LoggerFactory.getLogger(GiftService.class);
+
     private final GiftRepository repository;
 
     @Autowired
@@ -28,6 +32,7 @@ public class GiftService {
      * @return список подарков
      */
     public List<Gift> getAll() {
+        log.info("Get all");
         return repository.findAll();
     }
 
@@ -38,6 +43,7 @@ public class GiftService {
      * @throws GiftNotFoundException если подарок не найден
      */
     public Gift get(Long id) {
+        log.info("Get with id {}", id);
         return repository.findById(id)
                 .orElseThrow(() -> new GiftNotFoundException(id));
     }
@@ -48,6 +54,7 @@ public class GiftService {
      * @return список подарков по важности
      */
     public List<Gift> getByImportance(Importance importance) {
+        log.info("Get with importance {}", importance);
         return repository.findByImportance(importance);
     }
 
@@ -58,6 +65,7 @@ public class GiftService {
      */
     public Gift save(Gift gift) {
         Assert.notNull(gift, "Gift must not be null");
+        log.info("Save gift {}", gift);
         return repository.save(gift);
     }
 
@@ -68,6 +76,7 @@ public class GiftService {
      */
     public Gift update(Gift gift) {
         Assert.notNull(gift, "Gift must not be null");
+        log.info("Update gift {}", gift);
         Long id = gift.getId();
         Gift existing = get(id);
         if (existing == null) {
@@ -87,7 +96,8 @@ public class GiftService {
      * @throws GiftNotFoundException если подарок не найден
      */
     public void delete(Long id) {
-        if(!repository.existsById(id)) {
+        log.info("Delete gift {}", id);
+        if (!repository.existsById(id)) {
             throw new GiftNotFoundException(id);
         }
         repository.deleteById(id);

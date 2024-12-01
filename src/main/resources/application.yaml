@@ -1,8 +1,18 @@
 spring:
   application:
     name: Wishlist
+  main:
+    banner-mode: off
   datasource:
     url: jdbc:postgresql://localhost:5432/wishlist
     username: username
     password: password
     driver-class-name: org.postgresql.Driver
+logging:
+  pattern:
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+  file:
+    name: logs/wislist.log
+  level:
+    ru.berdennikov.wishlist: debug
