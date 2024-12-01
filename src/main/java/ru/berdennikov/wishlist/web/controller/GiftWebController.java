@@ -24,10 +24,10 @@ public class GiftWebController {
 
     public static final String GIFT_WEB_URL = "/gifts";
 
-    private static final String GIFT_FORM = "giftForm";
-    private static final String GIFT_NOT_FOUND_FORM = "giftNotFound";
-    private static final String WISHLIST_VIEW = "wishlist";
-    private static final String WISHLIST_REDIRECT = "redirect:/gifts";
+    public static final String GIFT_FORM = "giftForm";
+    public static final String GIFT_NOT_FOUND_FORM = "giftNotFound";
+    public static final String WISHLIST_VIEW = "wishlist";
+    public static final String WISHLIST_REDIRECT = "redirect:/gifts";
 
     private static final Logger log = LoggerFactory.getLogger(GiftWebController.class);
 
