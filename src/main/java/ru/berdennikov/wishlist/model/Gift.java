@@ -21,8 +21,8 @@ public class Gift {
     /**
      *  Название
      */
-    @NotBlank(message = "Название не может быть пустым")
-    @Size(min = 5, max = 150, message = "Длина названия должна быть от 5 до 150 символов")
+    @NotBlank(message = "{gift.notEmpty}")
+    @Size(min = 5, max = 150, message = "{gift.size}")
     private String title;
 
     /**

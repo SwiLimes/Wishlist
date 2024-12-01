@@ -1,0 +1,43 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="#{gift.wishlist}"/>
+    <link th:href="@{/styles/wishlist.css}" rel="stylesheet"/>
+</head>
+<body>
+<h1 th:text="#{gift.wishlist}"/>
+<div class="toolbar">
+    <a href="/gifts/create" th:text="#{create}"></a>
+    <br>
+    <form th:action="@{/gifts}">
+        <label for="importance" th:text="#{filter}"></label>
+        <select id="importance" name="importance">
+            <option th:each="importance : ${T(ru.berdennikov.wishlist.model.Importance).values()}"
+                    th:value="${importance}"  th:text="${importance}"
+                    th:selected="${importance == selectedImportance}"></option>
+        </select>
+        <button type="submit" th:text="#{filter}"></button>
+    </form>
+    <a href="/gifts" th:text="#{clearFilter}"></a>
+</div>
+<table id="wishlist">
+    <thead>
+    <tr>
+        <th th:text="#{gift.title}"/>
+        <th th:text="#{gift.description}"/>
+        <th th:text="#{gift.importance}"/>
+        <th></th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="gift : ${gifts}">
+        <td th:text="${gift.title}"></td>
+        <td th:text="${gift.description}"></td>
+        <td th:text="${gift.importance}"></td>
+        <td><a th:href="@{/gifts/edit/{id}(id=${gift.id})}" th:text="#{edit}"></a></td>
+        <td><a th:href="@{/gifts/delete/{id}(id=${gift.id})}" th:text="#{delete}"></a></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

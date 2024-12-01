@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="#{gift.title}"></title>
+</head>
+<body>
+<h3 th:text="#{gift.addOrUpdate}"></h3>
+<form th:action="@{/gifts/createOrUpdate}" th:object="${gift}" method="post">
+    <input type="hidden" th:field="*{id}">
+    <label for="name" th:text="#{gift.title}">:</label><br>
+    <input type="text" th:field="*{title}" id="name"><br>
+    <span style="color: red" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></span><br>
+    <label for="description" th:text="#{gift.description}">:</label><br>
+    <textarea th:field="*{description}" id="description"></textarea><br>
+    <label for="importance" th:text="#{gift.importance}">:</label>
+    <select th:field="*{importance}" id="importance">
+        <option th:each="impotance : ${T(ru.berdennikov.wishlist.model.Importance).values()}"
+                th:value="${impotance}" th:text="${impotance}"></option>
+    </select><br>
+    <button type="submit" th:text="#{ok}"></button>
+</form>
+<a href="/gifts" th:text="#{home}"></a>
+</body>
+</html>
